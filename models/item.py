@@ -1,8 +1,6 @@
-import sqlite3
 from db import db
 
 class ItemModel(db.Model):
-
     __tablename__ = 'items'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -22,7 +20,7 @@ class ItemModel(db.Model):
 
     @classmethod
     def find_by_name(cls, name):
-        return cls.query.filter_by(name=name).first() # SELECT * FROM items WHERE name=name LIMIT 1
+        return cls.query.filter_by(name=name).first()
 
     def save_to_db(self):
         db.session.add(self)
